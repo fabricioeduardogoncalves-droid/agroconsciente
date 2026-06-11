@@ -3,285 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Agroconsciente | Agricultura sem veneno</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            background: #eef4e2;
-            color: #1a3b2e;
-            line-height: 1.5;
-        }
-
-        /* Cabeçalho fixo com navegação entre páginas */
-        header {
-            background: #0f4c2f;
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        nav {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.7rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .logo span {
-            color: #e9f5b6;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .nav-links button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            transition: 0.2s;
-        }
-
-        .nav-links button:hover {
-            background: #2c6e49;
-            color: #f9f3c1;
-            transform: translateY(-2px);
-        }
-
-        .nav-links .active-page {
-            background: #e9b35f;
-            color: #0a2f1f;
-        }
-
-        /* Container principal - PÁGINAS */
-        .page {
-            display: none;
-            max-width: 1300px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            border-radius: 36px;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-            animation: fade 0.3s ease;
-        }
-
-        .active-page-content {
-            display: block;
-        }
-
-        @keyframes fade {
-            from { opacity: 0; transform: translateY(12px);}
-            to { opacity: 1; transform: translateY(0);}
-        }
-
-        h2 {
-            color: #1a6e46;
-            font-size: 2rem;
-            border-left: 8px solid #e9b35f;
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 {
-            color: #2c5a2e;
-            margin: 1rem 0 0.6rem;
-            font-size: 1.5rem;
-        }
-
-        .card-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .info-card {
-            background: #fef7e0;
-            border-radius: 28px;
-            padding: 1.5rem;
-            flex: 1 1 280px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-            border-left: 6px solid #e9b35f;
-            transition: 0.2s;
-        }
-
-        .info-card h4 {
-            font-size: 1.4rem;
-            color: #b45f1b;
-            margin-bottom: 0.8rem;
-        }
-
-        .highlight-box {
-            background: #d9e8cf;
-            padding: 1.3rem;
-            border-radius: 28px;
-            margin: 1.8rem 0;
-            border-left: 6px solid #1f6e43;
-        }
-
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #1f543b;
-        }
-
-        /* Estilos do QUIZ com cores fortes e de alto contraste */
-        .quiz-area {
-            background: #fcf9ef;
-        }
-
-        .question {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 1.5rem;
-            margin-bottom: 1.8rem;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            border: 1px solid #d4dbb0;
-        }
-
-        .question p {
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #1e3a2f;
-            margin-bottom: 1rem;
-        }
-
-        .options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 0.5rem 0 0.5rem;
-        }
-
-        .option-btn {
-            background: #2c5e3f;
-            border: none;
-            color: white;
-            font-weight: bold;
-            padding: 0.7rem 1.2rem;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: 0.15s;
-            font-size: 0.9rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-
-        .option-btn:hover {
-            background: #e9b35f;
-            color: #1e3a2f;
-            transform: scale(0.97);
-        }
-
-        .correct-feedback {
-            color: #0f6e2f;
-            background: #d9f0dd;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .wrong-feedback {
-            color: #b13e2d;
-            background: #ffe1db;
-            padding: 0.5rem 1rem;
-            border-radius: 40px;
-            font-weight: bold;
-            margin-top: 10px;
-            display: inline-block;
-        }
-
-        .quiz-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 2px solid #cfddb2;
-        }
-
-        button.primary-btn {
-            background: #1f6e43;
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 60px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        button.primary-btn:hover {
-            background: #0f4c2f;
-            transform: translateY(-2px);
-        }
-
-        button.reset-btn {
-            background: #b1622c;
-        }
-
-        button.reset-btn:hover {
-            background: #8a461b;
-        }
-
-        .score {
-            background: #2c6e49;
-            color: #f9efcf;
-            padding: 0.6rem 1.3rem;
-            border-radius: 60px;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        footer {
-            background: #1a382a;
-            color: #d9e2cc;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        @media (max-width: 700px) {
-            .page {
-                margin: 1rem;
-                padding: 1.2rem;
-            }
-            .options {
-                flex-direction: column;
-            }
-            .option-btn {
-                text-align: center;
-            }
-        }
-    </style>
+    <title>Agroconsciente | Menos veneno, mais vida</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -290,18 +13,18 @@
         <div class="logo">🌿 Agro<span>Consciente</span></div>
         <div class="nav-links">
             <button data-page="inicio" class="active-page">🌱 Início</button>
-            <button data-page="impactos">⚠️ Impactos Ambientais</button>
-            <button data-page="solucoes">💚 Soluções Sustentáveis</button>
+            <button data-page="impactos">⚠️ Impactos</button>
+            <button data-page="solucoes">💚 Soluções</button>
             <button data-page="quiz">🧠 Quiz + Info</button>
         </div>
     </nav>
 </header>
 
 <main>
-    <!-- PÁGINA 1 - INÍCIO (visão geral) -->
+    <!-- PÁGINA 1 - INÍCIO -->
     <div id="page-inicio" class="page active-page-content">
         <h2>🌾 Agricultura Consciente: menos veneno, mais vida</h2>
-        <p style="font-size:1.2rem; margin-bottom:1rem;">O modelo agrícola baseado no uso excessivo de agrotóxicos contaminou solos, rios e ameaça a saúde de milhões. A <strong>Agroconsciente</strong> defende uma transição urgente para práticas ecológicas que respeitam os ciclos da natureza e alimentam o futuro.</p>
+        <p class="lead">O modelo agrícola baseado no uso excessivo de agrotóxicos contamina solos, rios e ameaça a saúde de milhões. A <strong>Agroconsciente</strong> defende uma transição urgente para práticas ecológicas que respeitam os ciclos da natureza e alimentam o futuro.</p>
         
         <div class="card-grid">
             <div class="info-card">
@@ -310,7 +33,7 @@
             </div>
             <div class="info-card">
                 <h4>🐝 Colapso dos polinizadores</h4>
-                <p>Estudos indicam declínio de 40% em colônias de abelhas em regiões com intensa pulverização aérea, comprometendo a produção de frutas, hortaliças e grãos.</p>
+                <p>Estudos indicam declínio de 40% em colônias de abelhas em regiões com intensa pulverização aérea, comprometendo a produção de frutas e hortaliças.</p>
             </div>
             <div class="info-card">
                 <h4>💧 Água contaminada</h4>
@@ -344,7 +67,7 @@
         </div>
         <div class="highlight-box">
             <h3>📊 Dados alarmantes sobre o solo</h3>
-            <p>O uso contínuo de herbicidas reduz drasticamente a matéria orgânica e os microrganismos responsáveis por decompor resíduos. Estima-se que um solo agrícola convencional perde até 50% de sua biodiversidade em 10 anos de cultivo intensivo com agrotóxicos. Isso gera erosão, compactação e dependência química.</p>
+            <p>O uso contínuo de herbicidas reduz drasticamente a matéria orgânica e os microrganismos responsáveis por decompor resíduos. Estima-se que um solo agrícola convencional perca até 50% de sua biodiversidade em 10 anos de cultivo intensivo com agrotóxicos. Isso gera erosão, compactação e dependência química.</p>
             <p><span class="stat-number">+80%</span> das abelhas nativas já desapareceram em áreas de monocultura com uso frequente de neonicotinoides no Centro-Oeste brasileiro.</p>
         </div>
     </div>
@@ -368,7 +91,7 @@
         </div>
         <div class="highlight-box">
             <h3>🏆 Exemplos reais que funcionam</h3>
-            <p>No sul do Brasil, propriedades que adotaram manejo ecológico reduziram o uso de agrotóxicos em 95% e mantiveram a produtividade de grãos. O selo de produto orgânico/ agroecológico agrega valor e abre mercados. Consumidores podem cobrar alimentos sem veneno. A transição é possível e urgente.</p>
+            <p>No sul do Brasil, propriedades que adotaram manejo ecológico reduziram o uso de agrotóxicos em 95% e mantiveram a produtividade de grãos. O selo de produto orgânico/agroecológico agrega valor e abre mercados. Consumidores podem cobrar alimentos sem veneno. A transição é possível e urgente.</p>
             <p style="margin-top: 8px;"><strong>✔️ Dica prática: Apoie feiras orgânicas, pressione por políticas públicas de incentivo à agroecologia e reduza o consumo de ultraprocessados oriundos de monocultivos tóxicos.</strong></p>
         </div>
     </div>
@@ -377,7 +100,7 @@
     <div id="page-quiz" class="page">
         <h2>🧪 Teste seu conhecimento: agrotóxicos e sustentabilidade</h2>
         <p>Responda as 15 questões abaixo. Depois clique em "Verificar respostas" e descubra seu nível de conscientização ambiental. Cada erro vira aprendizado!</p>
-        <div id="quiz-container" class="quiz-area" style="background: transparent; padding: 0;"></div>
+        <div id="quiz-container" class="quiz-area"></div>
         <div class="quiz-controls">
             <button id="checkAllBtn" class="primary-btn">✅ Verificar respostas</button>
             <button id="resetQuizBtn" class="primary-btn reset-btn">🔄 Reiniciar quiz</button>
@@ -396,219 +119,6 @@
     <p style="margin-top:0.5rem; font-size:0.9rem;">Baseado em dados da Anvisa, IBGE, Fiocruz e estudos agroecológicos. Compartilhe conhecimento.</p>
 </footer>
 
-<script>
-    // ======================= DADOS DAS 15 QUESTÕES =======================
-    const questions = [
-        { text: "1. Qual é uma das consequências diretas do uso excessivo de agrotóxicos na água?", options: ["Aumento do fitoplâncton", "Contaminação de rios e lençóis freáticos", "Redução da acidez da água", "Eutrofização benéfica"], correct: 1 },
-        { text: "2. Os neonicotinoides (tipo de inseticida) são especialmente perigosos para:", options: ["Roedores silvestres", "Aves de rapina", "Abelhas e polinizadores", "Plantas daninhas"], correct: 2 },
-        { text: "3. Qual prática é característica da agricultura sustentável?", options: ["Monocultura com aplicação de glyphosate", "Controle biológico de pragas", "Queima de restos culturais", "Uso intensivo de fertilizantes sintéticos"], correct: 1 },
-        { text: "4. O que a contaminação crônica por agrotóxicos pode causar em seres humanos?", options: ["Melhora da visão noturna", "Câncer e distúrbios endócrinos", "Resistência a antibióticos", "Aumento da imunidade"], correct: 1 },
-        { text: "5. Qual país é o maior consumidor de agrotóxicos do mundo?", options: ["Estados Unidos", "China", "Brasil", "Índia"], correct: 2 },
-        { text: "6. Como os agrotóxicos afetam a biodiversidade do solo?", options: ["Eliminam minhocas e fungos benéficos", "Aumentam a porosidade", "Fixam nitrogênio", "Estimulam bactérias nitrificantes"], correct: 0 },
-        { text: "7. A rotação de culturas ajuda a reduzir o uso de agrotóxicos porque:", options: ["Quebra o ciclo de pragas e doenças", "Exige mais herbicidas", "Aduba quimicamente o solo", "Aumenta a área plantada"], correct: 0 },
-        { text: "8. O que significa o selo 'Orgânico Brasil'?", options: ["Produto com agrotóxicos controlados", "Alimento livre de agrotóxicos sintéticos", "Uso de transgênicos", "Agricultura hidropônica"], correct: 1 },
-        { text: "9. Qual substância ativa do glifosato está ligada a controvérsias ambientais?", options: ["Atrazina", "Metsulfurom", "Glifosato (herbicida amplamente usado)", "Clorpirifós"], correct: 2 },
-        { text: "10. O controle biológico utiliza:", options: ["Inseticidas de amplo espectro", "Inimigos naturais como joaninhas e vespas", "Fumigação química", "Aragem profunda"], correct: 1 },
-        { text: "11. Como a agricultura regenerativa beneficia o clima?", options: ["Sequestra carbono no solo e reduz emissões de N2O", "Emite metano", "Desmata florestas", "Usa mais fertilizantes nitrogenados"], correct: 0 },
-        { text: "12. A contaminação por agrotóxicos afeta mais intensamente:", options: ["Grandes centros urbanos", "Comunidades rurais e ribeirinhas", "Indústrias farmacêuticas", "Pesca oceânica"], correct: 1 },
-        { text: "13. Qual alternativa é uma barreira natural contra pragas em agroecossistemas?", options: ["Cercas elétricas", "Cultivo de plantas repelentes (ex: cravo-de-defunto)", "Sal nas folhas", "Queimadas anuais"], correct: 1 },
-        { text: "14. Qual impacto NÃO está associado ao uso excessivo de agrotóxicos?", options: ["Polinização mais eficiente", "Mortalidade de abelhas", "Resistência de pragas", "Contaminação do leite materno"], correct: 0 },
-        { text: "15. Para reduzir o uso de veneno, consumidores podem:", options: ["Exigir alimentos orgânicos e apoiar feiras agroecológicas", "Comprar apenas produtos importados", "Lavar frutas com água sanitária", "Evitar vegetais"], correct: 0 }
-    ];
-
-    let userAnswers = new Array(15).fill(null);
-    let quizChecked = false;
-
-    const quizContainer = document.getElementById('quiz-container');
-    const scoreSpan = document.getElementById('scoreDisplay');
-    const checkBtn = document.getElementById('checkAllBtn');
-    const resetBtn = document.getElementById('resetQuizBtn');
-
-    function renderQuiz() {
-        if (!quizContainer) return;
-        quizContainer.innerHTML = '';
-        for (let i = 0; i < questions.length; i++) {
-            const q = questions[i];
-            const qDiv = document.createElement('div');
-            qDiv.classList.add('question');
-            qDiv.setAttribute('data-qidx', i);
-
-            const questionP = document.createElement('p');
-            questionP.innerText = q.text;
-            qDiv.appendChild(questionP);
-
-            const optsDiv = document.createElement('div');
-            optsDiv.classList.add('options');
-            
-            q.options.forEach((opt, idx) => {
-                const btn = document.createElement('button');
-                btn.innerText = opt;
-                btn.classList.add('option-btn');
-                // Estilo padrão ou baseado em resposta salva
-                if (userAnswers[i] === idx) {
-                    btn.style.background = "#e9b35f";
-                    btn.style.color = "#1a3b2e";
-                    btn.style.border = "2px solid #c07d2c";
-                } else {
-                    btn.style.background = "#2c5e3f";
-                    btn.style.color = "white";
-                }
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (quizChecked) {
-                        // reset modo verificado
-                        quizChecked = false;
-                        updateScoreDisplayBasedOnMode();
-                    }
-                    userAnswers[i] = idx;
-                    renderQuiz(); // re-render
-                });
-                optsDiv.appendChild(btn);
-            });
-            qDiv.appendChild(optsDiv);
-            
-            const feedbackDiv = document.createElement('div');
-            feedbackDiv.id = `fb-${i}`;
-            feedbackDiv.style.marginTop = "8px";
-            qDiv.appendChild(feedbackDiv);
-            quizContainer.appendChild(qDiv);
-        }
-        
-        // Se quizChecked estiver ativo, exibir correções
-        if (quizChecked) {
-            for (let i = 0; i < questions.length; i++) {
-                const fbDiv = document.getElementById(`fb-${i}`);
-                const userChoice = userAnswers[i];
-                const correctIdx = questions[i].correct;
-                if (fbDiv) {
-                    if (userChoice === null) {
-                        fbDiv.innerHTML = '<div class="wrong-feedback">❌ Não respondida.</div>';
-                    } else if (userChoice === correctIdx) {
-                        fbDiv.innerHTML = '<div class="correct-feedback">✔️ Certo! Resposta correta.</div>';
-                    } else {
-                        const correctText = questions[i].options[correctIdx];
-                        fbDiv.innerHTML = `<div class="wrong-feedback">❌ Errado. Alternativa correta: "${correctText}".</div>`;
-                    }
-                }
-                // destacar visualmente as opções
-                const containerDiv = document.querySelector(`.question[data-qidx='${i}']`);
-                if (containerDiv) {
-                    const btns = containerDiv.querySelectorAll('.option-btn');
-                    btns.forEach((btn, optIndex) => {
-                        if (optIndex === correctIdx) {
-                            btn.style.background = "#238b4a";
-                            btn.style.color = "white";
-                            btn.style.border = "2px solid #f9c270";
-                        }
-                        if (userChoice !== null && optIndex === userChoice && userChoice !== correctIdx) {
-                            btn.style.background = "#b52e1a";
-                            btn.style.color = "white";
-                            btn.style.border = "2px solid #ffa066";
-                        } else if (userChoice !== null && optIndex === userChoice && userChoice === correctIdx) {
-                            btn.style.background = "#238b4a";
-                        } else if (optIndex !== correctIdx && !(userChoice !== null && optIndex === userChoice)) {
-                            btn.style.background = "#2c5e3f";
-                            btn.style.color = "white";
-                        }
-                    });
-                }
-            }
-        } else {
-            // modo não verificado: apenas mostra respostas selecionadas sem feedback de correção
-            for (let i = 0; i < questions.length; i++) {
-                const fbDiv = document.getElementById(`fb-${i}`);
-                if (fbDiv) fbDiv.innerHTML = '';
-                const containerDiv = document.querySelector(`.question[data-qidx='${i}']`);
-                if (containerDiv) {
-                    const btns = containerDiv.querySelectorAll('.option-btn');
-                    btns.forEach((btn, idx) => {
-                        if (userAnswers[i] === idx) {
-                            btn.style.background = "#e9b35f";
-                            btn.style.color = "#1a3b2e";
-                            btn.style.border = "2px solid #c07d2c";
-                        } else {
-                            btn.style.background = "#2c5e3f";
-                            btn.style.color = "white";
-                            btn.style.border = "none";
-                        }
-                    });
-                }
-            }
-        }
-        updateScoreDisplayBasedOnMode();
-    }
-    
-    function computeScore() {
-        let correct = 0;
-        for (let i = 0; i < questions.length; i++) {
-            if (userAnswers[i] !== null && userAnswers[i] === questions[i].correct) correct++;
-        }
-        return correct;
-    }
-    
-    function updateScoreDisplayBasedOnMode() {
-        if (quizChecked) {
-            const total = computeScore();
-            scoreSpan.innerText = `🏆 Pontuação: ${total} / 15`;
-        } else {
-            const answered = userAnswers.filter(a => a !== null).length;
-            scoreSpan.innerText = `📝 Respondidas: ${answered}/15 | Verifique para ver acertos`;
-        }
-    }
-    
-    function checkAll() {
-        quizChecked = true;
-        renderQuiz();
-        const finalScore = computeScore();
-        scoreSpan.innerText = `🏆 Pontuação: ${finalScore} / 15`;
-    }
-    
-    function resetQuiz() {
-        userAnswers = new Array(15).fill(null);
-        quizChecked = false;
-        renderQuiz();
-        scoreSpan.innerText = `📝 Respondidas: 0/15 | Verifique para ver acertos`;
-    }
-    
-    checkBtn.addEventListener('click', checkAll);
-    resetBtn.addEventListener('click', resetQuiz);
-    
-    // ============ SISTEMA DE TROCA DE PÁGINAS (NAVEGAÇÃO) =============
-    const pages = {
-        inicio: document.getElementById('page-inicio'),
-        impactos: document.getElementById('page-impactos'),
-        solucoes: document.getElementById('page-solucoes'),
-        quiz: document.getElementById('page-quiz')
-    };
-    
-    function showPage(pageId) {
-        Object.keys(pages).forEach(id => {
-            if (pages[id]) pages[id].classList.remove('active-page-content');
-        });
-        if (pages[pageId]) pages[pageId].classList.add('active-page-content');
-        // atualizar estilo dos botões
-        document.querySelectorAll('.nav-links button').forEach(btn => {
-            btn.classList.remove('active-page');
-            if (btn.getAttribute('data-page') === pageId) {
-                btn.classList.add('active-page');
-            }
-        });
-        // Se ao voltar para quiz manter renderização correta
-        if (pageId === 'quiz' && quizContainer) {
-            renderQuiz(); // garantir que quiz seja re-renderizado com estado atual
-        }
-    }
-    
-    document.querySelectorAll('.nav-links button').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const page = btn.getAttribute('data-page');
-            if (page) showPage(page);
-        });
-    });
-    
-    // Inicializar página ativa (início) e renderizar quiz
-    showPage('inicio');
-    renderQuiz();
-</script>
+<script src="script.js"></script>
 </body>
 </html>
