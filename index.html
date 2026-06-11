@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Agricultura Sustentável | Contra o Excesso de Agrotóxicos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f7e8;
+            color: #1e3a2f;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Header / navegação */
+        header {
+            background: #1e5f3a;
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #d4e66a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #d4e66a;
+            transform: translateY(-2px);
+        }
+
+        /* seções gerais */
+        section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #d9e6b3, #b8d9a6);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 1rem auto;
+        }
+
+        h2 {
+            color: #1e5f3a;
+            border-left: 6px solid #7ab55c;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: #fefbe6;
+            border-radius: 24px;
+            padding: 1.5rem;
+            flex: 1 1 280px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            transition: 0.2s;
+            border: 1px solid #cfecb5;
+        }
+
+        .card h3 {
+            color: #2b6e47;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: #2c4b3a;
+        }
+
+        .dados-impacto {
+            background: #fff2df;
+            border-left: 8px solid #e67e22;
+        }
+
+        .quiz-area {
+            background: #faf9f0;
+        }
+
+        .question {
+            background: #ffffffd9;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border: 1px solid #cde2c0;
+        }
+
+        .question p {
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            font-size: 1.05rem;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .option-btn {
+            background: #eef4e6;
+            border: 1px solid #bddb9b;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.1s;
+            font-weight: 500;
+        }
+
+        .option-btn:hover {
+            background: #cbe5b4;
+            transform: scale(0.98);
+        }
+
+        .correct-feedback {
+            color: #2b7342;
+            font-weight: bold;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .wrong-feedback {
+            color: #c0392b;
+            font-weight: bold;
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .quiz-controls {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            gap: 1rem;
+        }
+
+        button {
+            background: #2d6a4f;
+            border: none;
+            color: white;
+            padding: 0.7rem 1.6rem;
+            border-radius: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        button:hover {
+            background: #1e513a;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #b46b3a;
+        }
+
+        .reset-btn:hover {
+            background: #8e4f2b;
+        }
+
+        .score {
+            font-size: 1.3rem;
+            font-weight: bold;
+            background: #1e5f3a20;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+        }
+
+        footer {
+            background: #1e3a2f;
+            color: #cfe6cf;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 680px) {
+            section {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            .options {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+            .option-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">🌱 Agro<span>Sustentável</span></div>
+        <div class="nav-links">
+            <a href="#sobre">Impactos</a>
+            <a href="#dados">Dados</a>
+            <a href="#quiz">Quiz</a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero / introdução -->
+    <section class="hero" id="sobre">
+        <h1>🌾 Poluição por Agrotóxicos: um alerta urgente</h1>
+        <p>O uso excessivo de defensivos químicos nas plantações contamina solos, água, abelhas e ameaça nossa saúde. A agricultura sustentável é o caminho para restaurar o equilíbrio da natureza.</p>
+        <p style="font-style:italic;">"Veneno na roça = veneno na mesa e no planeta"</p>
+    </section>
+
+    <!-- Artigos explicativos -->
+    <section>
+        <h2>🌍 Como o excesso de agrotóxicos prejudica a natureza?</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>💧 Contaminação da água</h3>
+                <p>Agrotóxicos escorrem para rios e lençóis freáticos, intoxicando peixes, anfíbios e chegando às torneiras. Estudos mostram resíduos em mais de 70% das águas superficiais em áreas agrícolas intensivas.</p>
+            </div>
+            <div class="card">
+                <h3>🐝 Mortandade de polinizadores</h3>
+                <p>Abelhas, borboletas e besouros desaparecem. Os neonicotinoides desorientam e matam colônias inteiras, afetando a produção de alimentos que dependem da polinização natural.</p>
+            </div>
+            <div class="card">
+                <h3>🌱 Degradação do solo</h3>
+                <p>Produtos químicos matam microrganismos benéficos, reduzem a matéria orgânica e tornam o solo dependente de adubos sintéticos, perdendo sua fertilidade natural.</p>
+            </div>
+            <div class="card">
+                <h3>🧑‍🌾 Riscos à saúde humana</h3>
+                <p>Resíduos em alimentos estão associados a câncer, desregulação hormonal e doenças neurológicas. Comunidades rurais sofrem com intoxicações crônicas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dados e alternativas -->
+    <section id="dados" class="dados-impacto">
+        <h2>📉 Fatos alarmantes & soluções sustentáveis</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>⚠️ Brasil é líder mundial</h3>
+                <p>O país consome mais de 500 mil toneladas de agrotóxicos por ano, sendo o maior consumidor global desde 2008. Muitos produtos proibidos na Europa ainda são usados aqui.</p>
+            </div>
+            <div class="card">
+                <h3>🌿 Alternativas agroecológicas</h3>
+                <p>Controle biológico, rotação de culturas, plantio direto e uso de extratos naturais reduzem pragas sem destruir o meio ambiente. A agricultura regenerativa captura carbono e recupera solos.</p>
+            </div>
+            <div class="card">
+                <h3>🐞 Agroecologia em números</h3>
+                <p>Propriedades que adotam manejo sustentável aumentam a biodiversidade em até 40% e mantêm produtividade similar sem veneno. O selo orgânico valoriza os alimentos.</p>
+            </div>
+        </div>
+        <p style="margin-top: 1rem; text-align:center; font-weight:500;">✊ Reduzir o uso de químicos é urgente: a natureza pede socorro e o futuro da agricultura depende do equilíbrio ecológico.</p>
+    </section>
+
+    <!-- QUIZ INTERATIVO 15 QUESTÕES -->
+    <section id="quiz" class="quiz-area">
+        <h2>🧠 Quiz da Agricultura Consciente</h2>
+        <p>Teste seus conhecimentos sobre o impacto dos agrotóxicos e princípios sustentáveis. Responda as 15 questões e veja sua pontuação!</p>
+        <div id="quiz-container"></div>
+        <div class="quiz-controls">
+            <button id="checkAllBtn" class="check-btn">✅ Verificar respostas</button>
+            <button id="resetQuizBtn" class="reset-btn">🔄 Reiniciar Quiz</button>
+            <div id="scoreDisplay" class="score">Pontuação: 0 / 15</div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>🌱 Agricultura Sustentável — pelo fim da poluição por agrotóxicos excessivos. Informação, consciência e ação.</p>
+    <p style="margin-top: 0.5rem;">Projeto para GitHub | Conscientização ambiental | #MenosVenenoMaisVida</p>
+</footer>
+
+<script>
+    // 15 questões sobre agrotoxicos, poluição, natureza e agricultura sustentável
+    const questions = [
+        {
+            text: "1. Qual é uma das principais consequências do uso excessivo de agrotóxicos nos corpos d'água?",
+            options: ["Aumento da biodiversidade aquática", "Contaminação de rios e aquíferos", "Neutralização de poluentes", "Florescimento de algas benéficas"],
+            correct: 1
+        },
+        {
+            text: "2. Como os agrotóxicos afetam as abelhas, polinizadoras essenciais?",
+            options: ["Melhoram sua orientação", "Aumentam a produção de mel", "Causam desorientação e mortandade", "Não afetam esses insetos"],
+            correct: 2
+        },
+        {
+            text: "3. Qual alternativa abaixo é uma prática de agricultura sustentável que reduz o uso de químicos?",
+            options: ["Monocultura extensiva", "Controle biológico de pragas", "Aplicação aérea frequente", "Queimadas controladas"],
+            correct: 1
+        },
+        {
+            text: "4. Os resíduos de agrotóxicos nos alimentos podem estar associados a quais problemas de saúde humana?",
+            options: ["Melhora do sistema imunológico", "Câncer e desregulação hormonal", "Aumento da energia vital", "Fortalecimento ósseo"],
+            correct: 1
+        },
+        {
+            text: "5. O que acontece com a microbiota do solo quando há aplicação excessiva de defensivos químicos?",
+            options: ["Microrganismos benéficos são destruídos", "Fixa nitrogênio espontaneamente", "Aumenta a matéria orgânica", "Não há impacto"],
+            correct: 0
+        },
+        {
+            text: "6. Qual país é conhecido como o maior consumidor mundial de agrotóxicos?",
+            options: ["Estados Unidos", "China", "Brasil", "Índia"],
+            correct: 2
+        },
+        {
+            text: "7. Como a agroecologia contribui para a preservação da natureza?",
+            options: ["Utiliza transgênicos em larga escala", "Promove diversidade de cultivos e inimigos naturais", "Depende de insumos sintéticos", "Desmata áreas nativas"],
+            correct: 1
+        },
+        {
+            text: "8. Além da contaminação direta, os agrotóxicos podem prejudicar animais silvestres através de:",
+            options: ["Enriquecimento de habitat", "Intoxicação por bioacumulação na cadeia alimentar", "Melhora da reprodução", "Aumento da oferta de frutos"],
+            correct: 1
+        },
+        {
+            text: "9. Qual é uma técnica sustentável para manejo de pragas sem veneno?",
+            options: ["Rotação de culturas e armadilhas naturais", "Aplicação de glifosato mensal", "Queima da cobertura vegetal", "Uso de mercúrio no solo"],
+            correct: 0
+        },
+        {
+            text: "10. Os neonicotinoides, tipo comum de agrotóxico, são especialmente nocivos para:",
+            options: ["Roedores", "Aves de rapina", "Polinizadores como abelhas", "Plantas daninhas"],
+            correct: 2
+        },
+        {
+            text: "11. Por que a agricultura sustentável beneficia o clima?",
+            options: ["Aumenta emissão de metano", "Elimina toda a vegetação", "Reduz uso de fertilizantes sintéticos e sequestra carbono no solo", "Não tem relação"],
+            correct: 2
+        },
+        {
+            text: "12. A contaminação por agrotóxicos em áreas rurais afeta especialmente:",
+            options: ["Apenas trabalhadores industriais", "Comunidades ribeirinhas e agricultores expostos", "Somente grandes cidades", "Nenhum grupo vulnerável"],
+            correct: 1
+        },
+        {
+            text: "13. Qual selo indica que um produto foi cultivado sem agrotóxicos sintéticos?",
+            options: ["Selo ISO 9001", "Selo Orgânico Brasil", "Selo INMETRO", "Selo FSC"],
+            correct: 1
+        },
+        {
+            text: "14. Qual dos seguintes impactos ambientais NÃO está associado ao uso excessivo de pesticidas?",
+            options: ["Erosão genética de pragas resistentes", "Polinização mais eficiente", "Morte de organismos não-alvo", "Contaminação de lençóis freáticos"],
+            correct: 1
+        },
+        {
+            text: "15. O princípio básico da agricultura regenerativa inclui:",
+            options: ["Uso intensivo de herbicidas", "Reconstrução da saúde do solo e biodiversidade", "Plantio em solos estéreis", "Monocultura anual"],
+            correct: 1
+        }
+    ];
+
+    let userAnswers = new Array(15).fill(null);  // armazena o índice da resposta marcada (0-3)
+    let feedbackStatus = new Array(15).fill(false); // se já mostrou feedback após verificação? controle, mas usaremos reativo.
+    let overallChecked = false; // flag para exibir respostas certas/erradas depois de clicar em verificar todas.
+    // Estado para verificação geral
+    let quizChecked = false;
+
+    const quizContainer = document.getElementById('quiz-container');
+    const scoreSpan = document.getElementById('scoreDisplay');
+    const checkAllBtn = document.getElementById('checkAllBtn');
+    const resetBtn = document.getElementById('resetQuizBtn');
+
+    function renderQuiz() {
+        quizContainer.innerHTML = '';
+        for (let i = 0; i < questions.length; i++) {
+            const q = questions[i];
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            questionDiv.setAttribute('data-qid', i);
+
+            const questionText = document.createElement('p');
+            questionText.innerText = q.text;
+            questionDiv.appendChild(questionText);
+
+            const optionsDiv = document.createElement('div');
+            optionsDiv.classList.add('options');
+            
+            // Criar botões de opção
+            q.options.forEach((opt, idx) => {
+                const optBtn = document.createElement('button');
+                optBtn.classList.add('option-btn');
+                optBtn.innerText = opt;
+                optBtn.setAttribute('data-opt-index', idx);
+                // Se já tem resposta selecionada, destacar visualmente
+                if (userAnswers[i] === idx) {
+                    optBtn.style.background = '#c8e6b5';
+                    optBtn.style.border = '2px solid #2e7d32';
+                } else {
+                    optBtn.style.background = '#eef4e6';
+                    optBtn.style.border = '1px solid #bddb9b';
+                }
+                optBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // Ao clicar em nova opção, atualiza userAnswers e remove verificação geral se houver
+                    if (quizChecked) {
+                        // se já verificou, ao modificar resposta, resetamos o estado de verificação global
+                        quizChecked = false;
+                        overallChecked = false;
+                        updateScoreDisplay(false);
+                    }
+                    // atualizar resposta
+                    userAnswers[i] = idx;
+                    // re-renderizar apenas os estilos ou re-render completo
+                    renderQuiz(); // recria para manter consistência e limpar feedbacks se necessário (mas feedbacks serão mostrados apenas se quizChecked true)
+                    // se já tinha verificação ativa, mantém? mas resetamos quizChecked = false acima então não há conflito
+                });
+                optionsDiv.appendChild(optBtn);
+            });
+            questionDiv.appendChild(optionsDiv);
+            
+            // Adicionar espaço para feedback (caso tenha verificação ativa)
+            const feedbackSpan = document.createElement('div');
+            feedbackSpan.classList.add('feedback-message');
+            feedbackSpan.id = `feedback-${i}`;
+            questionDiv.appendChild(feedbackSpan);
+            
+            quizContainer.appendChild(questionDiv);
+        }
+        
+        // Se quizChecked está true, exibir os feedbacks e cores das respostas corretas/erradas
+        if (quizChecked) {
+            for (let i = 0; i < questions.length; i++) {
+                const userAns = userAnswers[i];
+                const correctIdx = questions[i].correct;
+                const feedbackDiv = document.getElementById(`feedback-${i}`);
+                if (feedbackDiv) {
+                    if (userAns === null) {
+                        feedbackDiv.innerHTML = '<span class="wrong-feedback">❌ Não respondida.</span>';
+                        feedbackDiv.className = 'feedback-message wrong-feedback';
+                    } else if (userAns === correctIdx) {
+                        feedbackDiv.innerHTML = '<span class="correct-feedback">✅ Correto! Parabéns.</span>';
+                        feedbackDiv.className = 'feedback-message correct-feedback';
+                    } else {
+                        const correctAnswerText = questions[i].options[correctIdx];
+                        feedbackDiv.innerHTML = `<span class="wrong-feedback">❌ Errado. Resposta correta: "${correctAnswerText}".</span>`;
+                        feedbackDiv.className = 'feedback-message wrong-feedback';
+                    }
+                }
+                // Destacar visualmente as opções certas e erradas (melhor legibilidade)
+                const questionCard = document.querySelector(`.question[data-qid='${i}']`);
+                if (questionCard) {
+                    const btns = questionCard.querySelectorAll('.option-btn');
+                    btns.forEach((btn, optIndex) => {
+                        if (optIndex === correctIdx) {
+                            btn.style.background = '#b9f6ca';
+                            btn.style.border = '2px solid #2e7d32';
+                        } 
+                        if (userAns !== null && optIndex === userAns && userAns !== correctIdx) {
+                            btn.style.background = '#ffcdd2';
+                            btn.style.border = '2px solid #c62828';
+                        } else if (userAns !== null && optIndex === userAns && userAns === correctIdx) {
+                            btn.style.background = '#b9f6ca';
+                        } else if (optIndex !== correctIdx && !(userAns !== null && optIndex === userAns && userAns !== correctIdx)) {
+                            // manter estilo neutro porém sem sobrescrever o verde da correta
+                            if (optIndex !== correctIdx) {
+                                btn.style.background = '#eef4e6';
+                            }
+                        }
+                    });
+                }
+            }
+        } else {
+            // limpar todos os feedbacks e garantir que exibe apenas a seleção sem check
+            for (let i = 0; i < questions.length; i++) {
+                const feedbackDiv = document.getElementById(`feedback-${i}`);
+                if (feedbackDiv) feedbackDiv.innerHTML = '';
+                const questionCard = document.querySelector(`.question[data-qid='${i}']`);
+                if (questionCard) {
+                    const btns = questionCard.querySelectorAll('.option-btn');
+                    const userAns = userAnswers[i];
+                    btns.forEach((btn, idx) => {
+                        if (userAns === idx) {
+                            btn.style.background = '#c8e6b5';
+                            btn.style.border = '2px solid #2e7d32';
+                        } else {
+                            btn.style.background = '#eef4e6';
+                            btn.style.border = '1px solid #bddb9b';
+                        }
+                    });
+                }
+            }
+        }
+        // atualizar pontuação se estiver no modo verificado OU pontuação normal?
+        // Quando quizChecked true, calcula pontuação correta. Caso contrário mostra apenas quantas respondidas de 15? 
+        if (quizChecked) {
+            const score = computeScore();
+            scoreSpan.innerText = `Pontuação: ${score} / 15`;
+        } else {
+            // modo sem verificação: mostra quantas foram respondidas
+            const answered = userAnswers.filter(a => a !== null).length;
+            scoreSpan.innerText = `Respondidas: ${answered} / 15 | (Clique em verificar)`;
+        }
+    }
+    
+    function computeScore() {
+        let correctCount = 0;
+        for (let i = 0; i < questions.length; i++) {
+            if (userAnswers[i] !== null && userAnswers[i] === questions[i].correct) {
+                correctCount++;
+            }
+        }
+        return correctCount;
+    }
+    
+    function updateScoreDisplay(checkedMode) {
+        if (checkedMode) {
+            const score = computeScore();
+            scoreSpan.innerText = `Pontuação: ${score} / 15`;
+        } else {
+            const answered = userAnswers.filter(a => a !== null).length;
+            scoreSpan.innerText = `Respondidas: ${answered} / 15 | (Clique em verificar)`;
+        }
+    }
+    
+    // verificar todas as respostas e mostrar correções
+    function checkAllAnswers() {
+        quizChecked = true;
+        renderQuiz();  // re-renderiza exibindo os feedbacks e cores
+        const finalScore = computeScore();
+        scoreSpan.innerText = `Pontuação: ${finalScore} / 15`;
+        // Rolar levemente para o quiz não é obrigatório
+    }
+    
+    function resetQuiz() {
+        userAnswers = new Array(15).fill(null);
+        quizChecked = false;
+        overallChecked = false;
+        renderQuiz();
+        scoreSpan.innerText = `Respondidas: 0 / 15 | (Clique em verificar)`;
+        // além disso, remover qualquer style extra
+    }
+    
+    // Eventos
+    checkAllBtn.addEventListener('click', checkAllAnswers);
+    resetBtn.addEventListener('click', resetQuiz);
+    
+    // Inicialização
+    renderQuiz();
+</script>
+</body>
+</html>
